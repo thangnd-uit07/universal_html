@@ -2749,7 +2749,10 @@ class StyleElement extends HtmlElement {
       return null;
     }
     final text = this.text;
-    final parsed = css.parse(text);
+    if(text == null){
+      return null;
+    }
+    final parsed = css.parse(text as Object);
     final styleSheet = CssStyleSheet.constructor();
     for (var node in parsed.topLevels) {
       if (node is css.RuleSet) {
